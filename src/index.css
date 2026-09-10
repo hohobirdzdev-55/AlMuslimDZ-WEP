@@ -1,0 +1,57 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --color-bg-deep: #081d17;
+    --color-bg-card: #0e2b22;
+    --color-bg-card-hover: #13392e;
+    --color-accent-gold: #c29b68;
+    --color-accent-gold-light: #dfbd8e;
+    --color-accent-gold-dark: #a8814f;
+    --color-border-subtle: #194336;
+    --color-border-accent: rgba(194, 155, 104, 0.3);
+    --color-text-primary: #f7f4ed;
+    --color-text-secondary: #c9d5cf;
+    --color-text-muted: #88a397;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    font-family: 'IBM Plex Sans Arabic', system-ui, -apple-system, sans-serif;
+  }
+
+  body {
+    background-color: var(--color-bg-deep);
+    color: var(--color-text-primary);
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Cairo', 'IBM Plex Sans Arabic', system-ui, sans-serif;
+  }
+}
+
+/* Authentic Traditional Islamic 8-Point Star Geometry Pattern (Subtle, low-contrast, non-distracting) */
+.islamic-pattern-bg {
+  background-image: radial-gradient(circle at 50% 20%, rgba(26, 75, 59, 0.45) 0%, rgba(8, 29, 23, 0.98) 75%),
+    url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23c29b68' stroke-width='0.75' stroke-opacity='0.06'%3E%3Cpath d='M40 0 L80 40 L40 80 L0 40 Z'/%3E%3Cpath d='M0 0 L80 0 L80 80 L0 80 Z' stroke-opacity='0.03'/%3E%3Crect x='11.72' y='11.72' width='56.57' height='56.57' transform='rotate(45 40 40)'/%3E%3Crect x='11.72' y='11.72' width='56.57' height='56.57'/%3E%3Ccircle cx='40' cy='40' r='14' stroke-opacity='0.05'/%3E%3Cpath d='M40 20 L40 60 M20 40 L60 40' stroke-opacity='0.04'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+.islamic-pattern-subtle {
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23c29b68' stroke-width='0.6' stroke-opacity='0.04'%3E%3Cpolygon points='30,4 36,24 56,30 36,36 30,56 24,36 4,30 24,24'/%3E%3Crect x='12' y='12' width='36' height='36' transform='rotate(45 30 30)' stroke-opacity='0.03'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+/* Custom subtle scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #081d17;
+}
+::-webkit-scrollbar-thumb {
+  background: #194336;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #c29b68;
+}

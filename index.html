@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <script>
+      (function () {
+        // Intercept uncaught errors related to fetch getter assignment
+        window.addEventListener(
+          'error',
+          function (event) {
+            if (
+              event &&
+              event.message &&
+              event.message.indexOf('fetch') !== -1 &&
+              event.message.indexOf('only a getter') !== -1
+            ) {
+              if (typeof event.preventDefault === 'function') event.preventDefault();
+              return true;
+            }
+          },
+          true
+        );
+
+        // Make window.fetch writable so libraries and preview scripts can assign window.fetch safely
+        try {
+          var originalFetch = typeof window.fetch === 'function' ? window.fetch.bind(window) : undefined;
+          var _currentFetch = originalFetch;
+
+          Object.defineProperty(window, 'fetch', {
+            get: function () {
+              return _currentFetch;
+            },
+            set: function (newFetch) {
+              _currentFetch = newFetch;
+            },
+            configurable: true,
+            enumerable: true,
+          });
+        } catch (e) {
+          try {
+            var originalProtoFetch =
+              typeof Window.prototype.fetch === 'function'
+                ? Window.prototype.fetch.bind(window)
+                : undefined;
+            var _currentProtoFetch = originalProtoFetch;
+            Object.defineProperty(Window.prototype, 'fetch', {
+              get: function () {
+                return _currentProtoFetch;
+              },
+              set: function (newFetch) {
+                _currentProtoFetch = newFetch;
+              },
+              configurable: true,
+              enumerable: true,
+            });
+          } catch (_) {}
+        }
+      })();
+    </script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AlMuslimDZ – المسلم DZ | تطبيق إسلامي شامل</title>
+    <meta name="description" content="AlMuslimDZ تطبيق إسلامي يجمع القرآن الكريم والأذكار والأدعية ومواقيت الصلاة والقبلة والتسبيح الإلكتروني وحاسبة الزكاة وغيرها في مكان واحد." />
+    <meta name="keywords" content="AlMuslimDZ, المسلم DZ, تطبيق إسلامي, القرآن الكريم, مواقيت الصلاة, الأذكار, اتجاه القبلة, التسبيح الإلكتروني, حاسبة الزكاة, أندرويد APK" />
+    <meta name="author" content="HOHOBIRDZ DEV" />
+    <meta name="theme-color" content="#081d17" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="AlMuslimDZ – المسلم DZ | كل ما يحتاجه المسلم في تطبيق واحد" />
+    <meta property="og:description" content="AlMuslimDZ تطبيق إسلامي يجمع القرآن الكريم والأذكار والأدعية ومواقيت الصلاة والقبلة والتسبيح الإلكتروني وحاسبة الزكاة وغيرها في مكان واحد." />
+    <meta property="og:image" content="/cover.png" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="AlMuslimDZ – المسلم DZ | كل ما يحتاجه المسلم في تطبيق واحد" />
+    <meta name="twitter:description" content="AlMuslimDZ تطبيق إسلامي يجمع القرآن الكريم والأذكار والأدعية ومواقيت الصلاة والقبلة والتسبيح الإلكتروني وحاسبة الزكاة وغيرها في مكان واحد." />
+    <meta name="twitter:image" content="/cover.png" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/el%20muslim%20dz.png" />
+
+    <!-- Fonts: Cairo & IBM Plex Sans Arabic -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@500;600;700;800&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  </head>
+  <body class="bg-[#081d17] text-[#f4efe6] antialiased selection:bg-[#c29b68] selection:text-[#081d17]">
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+

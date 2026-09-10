@@ -1,0 +1,6 @@
+{
+  "name": "AlMuslimDZ – المسلم DZ",
+  "description": "الموقع الرسمي لتطبيق AlMuslimDZ – كل ما يحتاجه المسلم في تطبيق واحد: القرآن الكريم، الأذكار، مواقيت الصلاة، القبلة، التسبيح، الزكاة والعديد من الخدمات الإسلامية اليومية.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
